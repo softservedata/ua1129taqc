@@ -7,7 +7,7 @@ public class AppTest {
 
     @Test
     public void testApp() {
-        System.out.println("first test. Enhanced");
+        System.out.println("first test. Enhanced2");
         Assertions.assertTrue(true);
     }
 }
