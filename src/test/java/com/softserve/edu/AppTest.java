@@ -7,7 +7,6 @@ public class AppTest {
 
     @Test
     public void testApp() {
-        System.out.println("first test");
-        Assertions.assertTrue(true);
+        System.out.println("Message update");
     }
 }
