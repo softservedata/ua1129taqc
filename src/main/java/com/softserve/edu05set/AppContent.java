@@ -1,7 +1,13 @@
 package com.softserve.edu05set;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class AppContent {
     public static void main(String[] args) {
+        /*
         int[] num1 = {1, 3, 1, 2, 4, 3};
         int[] num2 = {3, 3, 2, 1, 3, 4, 1, 2};
         //
@@ -30,6 +36,14 @@ public class AppContent {
                 break;
             }
         }
+        */
+        //
+        Integer[] num1 = {1, 3, 1, 2, 4, 3};
+        Integer[] num2 = {3, 3, 2, 1, 3, 4, 1, 2 };
+        //
+        Set<Integer> set1 = new HashSet<>(Arrays.asList(num1));
+        Set<Integer> set2 = new HashSet<>(Arrays.asList(num2));
+        boolean isEqual = set1.equals(set2);
         //
         System.out.printf("isEqual = " + isEqual);
 
