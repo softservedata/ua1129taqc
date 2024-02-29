@@ -56,6 +56,7 @@ public class LoginTestTest {
     public void tearThis() throws InterruptedException {
         Thread.sleep(8000); // For Presentation
         System.out.println("\t@AfterEach executed");
+        // TODO
         // Close Session
     }
 
@@ -67,10 +68,12 @@ public class LoginTestTest {
         Thread.sleep(2000); // For Presentation
         //
         driver.findElement(By.id("email")).click();
+        driver.findElement(By.id("email")).clear();
         driver.findElement(By.id("email")).sendKeys("tyv09754@zslsz.com");
         Thread.sleep(2000); // For Presentation
         //
         driver.findElement(By.id("password")).click();
+        driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("Qwerty_1");
         Thread.sleep(2000); // For Presentation
         //
