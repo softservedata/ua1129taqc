@@ -1,10 +1,12 @@
+package com.softserve.edu.javaPart2;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Random;
 
 
-public class ArrayNumbers {
+public class ArrayNumbers1 {
     public static void main(String[] args) {
         ArrayList<Integer> Numbers = new ArrayList<Integer>();
         Random random = new Random();
@@ -48,5 +50,5 @@ public class ArrayNumbers {
             System.out.println("Sorted numbers:");
             System.out.println(Numbers);
         }
-        }
     }
+}
