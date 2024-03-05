@@ -50,7 +50,7 @@ public class CollectionOfNumbers {
             if (numberContains){
                 System.out.println("The collection contains the given number " + givenNumber);
             } else {
-                System.out.println("The collection doesn't contain the given number " + givenNumber);
+                System.out.println("The collection doesn't contain the given number: " + givenNumber);
             }
 
             Collections.sort(numbers);
