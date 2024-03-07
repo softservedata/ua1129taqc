@@ -31,10 +31,9 @@ public class CollectionOfNumbers {
     public static double averageValueOfNumbers(ArrayList<Integer> numbers) {
         double sum = 0;
         for (int j : numbers) {
-            sum += sum + j;
+            sum += j;
         }
-        double averageValue = sum / numbers.size();
-        return averageValue;
+        return sum / numbers.size();
     }
 
     public static ArrayList<Integer> removingEvenNumbers(ArrayList<Integer> numbers){
