@@ -3,6 +3,7 @@ package unitTest;
 import homework07.javapart2.Book;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -15,8 +16,8 @@ public class BookCollectionTest {
 private static Book.BookCollection books;
 private static Book.BookCollection books2;
 
-    @BeforeAll
-        static void  array1 () {
+    @BeforeEach
+        void  array1 () {
         books = new Book.BookCollection();
         books.addBook(new Book("title1", "author1", "genre1", 2012));
         books.addBook(new Book("title2", "author2", "genre2", 2012));
