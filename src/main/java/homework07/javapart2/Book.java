@@ -72,14 +72,30 @@ public class Book {
             }
         }
 
+        // Size collection
+        public int sizeCollection (){
+            return books.size();
+        }
+
+    // List of authors
+        public ArrayList<String> getListOfAuthors() {
+            ArrayList<String> authors = new ArrayList<>();
+            for (Book book : books) {
+                authors.add(book.getAuthor());
+            }
+            return authors;
+        }
+
         // Print the list of authors who have written books in a given genre.
-        public void listAuthorsByGivenGenre(String givenGenre) {
+        public ArrayList<String> listAuthorsByGivenGenre(String givenGenre) {
+            ArrayList<String> authorsList = new ArrayList<>();
             for (Book book : books) {
                 String genre = book.getGenre();
                 if (genre.equals(givenGenre)) {
-                    System.out.println(book.getAuthor());
+                    authorsList.add(book.getAuthor());
                 }
             }
+            return authorsList;
         }
 
         // Print the list of authors whose books were published in a given year.
@@ -146,6 +162,14 @@ public class Book {
             for (Book book : books){
                 System.out.println(book.getTitle() + " " + book.getYear());
             }
+        }
+
+        public ArrayList<Integer> getListOfYears() {
+            ArrayList<Integer> years = new ArrayList<>();
+            for (Book book : books) {
+                years.add(book.getYear());
+            }
+            return years;
         }
 
         // Combine two book collections into one.
