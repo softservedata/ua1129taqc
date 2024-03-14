@@ -1,8 +1,7 @@
 package com.softserve.edu.homeworkjava2.task3;
-
 import java.util.*;
 
-public class Task3 {
+public class ThirdTask {
 
     public static void main(String[] args) {
         List<Integer> numbers = new ArrayList<>();
@@ -32,16 +31,20 @@ public class Task3 {
     public static int minNumber(List<Integer> list) {
         return list.stream()
             .min(Comparator.naturalOrder())
-            .orElseThrow();
+            .orElseThrow(() -> new IllegalArgumentException("Collection is empty"));
     }
 
     public static int maxNumber(List<Integer> list) {
         return list.stream()
             .max(Comparator.naturalOrder())
-            .orElseThrow();
+            .orElseThrow(() -> new IllegalArgumentException("Collection is empty"));
     }
 
     public static double averageNumber(List<Integer> list) {
+        if (list.isEmpty()) {
+            throw new IllegalArgumentException("The average value cannot be calculated, since the collection is empty");
+        }
+
         int sum = 0;
         for (Integer element : list) {
             sum = sum + element;

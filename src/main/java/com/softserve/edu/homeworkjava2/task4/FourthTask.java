@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class Main {
+public class FourthTask {
     public static void main(String[] args) {
         Book book1 = new Book("Pride and Prejudice", "Jane Austen", "Novel", 1813);
         Book book2 = new Book("To Kill a Mockingbird", "Harper Lee", "Novel", 1960);
@@ -88,36 +88,36 @@ public class Main {
             .forEach(System.out::println);
     }
 
-    private static Book findBookByAuthor(List<Book> books, String author) {
+    public static Book findBookByAuthor(List<Book> books, String author) {
         return books.stream()
             .filter(book -> book.getAuthor().equalsIgnoreCase(author))
             .findAny()
-            .orElseThrow();
+            .orElseThrow(() -> new IllegalArgumentException("Collection is empty"));
     }
 
-    private static Collection<Book> findBooksByPublicationYear(List<Book> books, int year) {
+    public static Collection<Book> findBooksByPublicationYear(List<Book> books, int year) {
         return books.stream()
             .filter(book -> book.getYear() == year)
             .toList();
     }
 
-    private static Collection<Book> findBooksByGenre(List<Book> books, String genre) {
+    public static Collection<Book> findBooksByGenre(List<Book> books, String genre) {
         return books.stream()
             .filter(book -> book.getGenre().equalsIgnoreCase(genre))
             .toList();
     }
 
-    private static void removeAllBooksByAuthor(List<Book> books, String author) {
+    public static void removeAllBooksByAuthor(List<Book> books, String author) {
         books.removeIf(book -> book.getAuthor().equals(author));
     }
 
-    private static Collection<Book> sortBooksByAuthor(List<Book> books) {
+    public static Collection<Book> sortBooksByAuthor(List<Book> books) {
         return books.stream()
             .sorted(Comparator.comparing(Book::getAuthor))
             .toList();
     }
 
-    private static Collection<Book> mergeCollections(Collection<Book> firstCollection, Collection<Book> secondCollection) {
+    public static Collection<Book> mergeCollections(Collection<Book> firstCollection, Collection<Book> secondCollection) {
         return Stream.concat(firstCollection.stream(), secondCollection.stream())
             .toList();
     }
