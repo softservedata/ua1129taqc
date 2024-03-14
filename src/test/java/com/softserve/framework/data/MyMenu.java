@@ -3,14 +3,14 @@ package com.softserve.framework.data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySpaceMenu {
+public class MyMenu {
     private List<String> subMenu;
 
-    public MySpaceMenu() {
+    public MyMenu() {
         subMenu = new ArrayList<>();
     }
 
-    public MySpaceMenu addSubMenuName(String subMenuName) {
+    public MyMenu addSubMenuName(String subMenuName) {
         subMenu.add(subMenuName);
         return this;
     }

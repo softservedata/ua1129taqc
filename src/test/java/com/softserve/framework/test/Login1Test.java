@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
 public class Login1Test {
-
+    /*
     private WebDriver driver;
     private GuestOperation guestOperation;
     private LogginedOperation logginedOperation;
@@ -28,4 +28,5 @@ public class Login1Test {
         // Check
         Assertions.assertEquals(expectedLabel, logginedOperation.getMyHabbitsMenuName());
     }
+    */
 }

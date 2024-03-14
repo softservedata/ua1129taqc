@@ -198,4 +198,34 @@ public class GreenCityLogin {
         //
         isTestSuccessful = true;
     }
+
+    @Test
+    public void checkNewTab() throws InterruptedException {
+        String originalWindow = driver.getWindowHandle();
+        // Create new tab
+        driver.switchTo().newWindow(WindowType.TAB);
+        driver.get("https://www.google.com/");
+        Thread.sleep(2000); // For Presentation
+        //
+        System.out.println("Number of tabs = " + driver.getWindowHandles().size());
+        driver.findElement(By.name("q")).sendKeys("mac" + Keys.ENTER);
+        Thread.sleep(2000); // For Presentation
+        //
+        for (String windowHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(windowHandle);
+            System.out.println("Title = " + driver.getTitle());
+        }
+        //
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (originalWindow.contentEquals(windowHandle)) {
+                driver.switchTo().window(windowHandle);
+                System.out.println("Return to Original tab");
+                break;
+            }
+        }
+        Thread.sleep(2000); // For Presentation
+        //
+        isTestSuccessful = true;
+    }
+
 }

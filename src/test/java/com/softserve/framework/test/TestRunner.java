@@ -1,10 +1,12 @@
 package com.softserve.framework.test;
 
 import com.softserve.framework.library.GuestOperation;
+import com.softserve.framework.library.LocalStorageJS;
 import com.softserve.framework.library.LogginedOperation;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -18,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 
+@ExtendWith(RunnerExtension.class)
 public abstract class TestRunner {
     private static final String BASE_URL = "https://www.greencity.social/#/ubs";
     private static final Long IMPLICITLY_WAIT_SECONDS = 10L;
@@ -28,7 +31,8 @@ public abstract class TestRunner {
     private static WebDriver driver;
     protected static GuestOperation guestOperation;
     protected static LogginedOperation logginedOperation;
-    protected boolean isTestSuccessful = true;
+    protected static LocalStorageJS localStorageJS;
+    protected static boolean isTestSuccessful = true;
 
     protected void presentationSleep() {
         presentationSleep(1);
@@ -101,6 +105,7 @@ public abstract class TestRunner {
         //
         guestOperation = new GuestOperation(driver);
         logginedOperation = new LogginedOperation(driver);
+        localStorageJS = new LocalStorageJS(driver);
         //
         System.out.println("@BeforeAll executed");
     }
@@ -122,7 +127,7 @@ public abstract class TestRunner {
 
     @AfterEach
     public void tearThis(TestInfo testInfo) throws InterruptedException {
-        Thread.sleep(8000); // For Presentation
+        presentationSleep(2); // For Presentation ONLY
         System.out.println("\t@AfterEach executed, getDisplayName = " + testInfo.getDisplayName());
         System.out.println("\t@AfterEach executed, getTestMethod = " + testInfo.getTestMethod());
         //
@@ -130,8 +135,26 @@ public abstract class TestRunner {
             takeScreenShot(testInfo.getDisplayName());
             takePageSource(testInfo.getDisplayName());
         }
-        // TODO
+        //
         // Close Session
+        // delete All Cookies;
+        driver.manage().deleteAllCookies();
+        // TODO delete token
+        // window.localStorage.removeItem('accessToken');
+        // window.localStorage.removeItem('refreshToken');
+        // js.executeScript(String.format("window.localStorage.clear();"));
+        //
+        // delete All Tokens;
+        //localStorageJS.clearLocalStorage();
+        localStorageJS.removeItemFromLocalStorage("accessToken");
+        localStorageJS.removeItemFromLocalStorage("refreshToken");
+        //
+        // Refresh page
+        presentationSleep(4); // For Presentation ONLY
+        driver.navigate().refresh();
+        presentationSleep(1); // For Presentation ONLY
+        //
+        System.out.println("\t@AfterEach executed");
     }
 
 }
