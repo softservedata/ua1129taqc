@@ -53,7 +53,7 @@ public class Rectangle {
     }
 
     public double getDiagonal() {
-        return width * width + height * height;
+        return Math.sqrt(width * width + height * height);
     }
 
     public static void main (String[]args){
