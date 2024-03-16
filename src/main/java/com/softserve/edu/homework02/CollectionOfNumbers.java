@@ -2,9 +2,48 @@ package com.softserve.edu.homework02;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class CollectionOfNumbers {
+
+    public List<Integer> getIntegerCollection() {
+        List<Integer> collect = new ArrayList<>();
+
+        Random random = new Random();
+
+        for (int i = 0; i < 20; i++)
+        {
+            int index = random.nextInt(1, 100);
+            collect.add(index);
+        }
+
+        return collect;
+    }
+
+    public List<Integer> getIntegerCollectionWithoutEvenNumbers() {
+
+        List<Integer> collect = getIntegerCollection();
+
+        for (int i = 0; i < collect.size(); i++) {
+            if (collect.get(i) % 2 == 0){
+                collect.remove(i);
+                i--;
+            };
+        }
+
+        return collect;
+    }
+
+    public List<Integer> getSortedIntegerCollection() {
+
+        List<Integer> collect = getIntegerCollection();
+
+        Collections.sort(collect);
+
+        return collect;
+    }
+
     public static void main(String[] args) {
 
         ArrayList<Integer> myList = new ArrayList<Integer>();
