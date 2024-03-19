@@ -26,6 +26,7 @@ public class LoginTest extends TestRunner {
     @MethodSource("provideUsers")
     //public void checkLogin(String email, String password, String expectedUserName) {
     public void checkLogin(User user) {
+        logger.info("Start with user = " + user);
         // Login
         //guestOperation.signIn(email, password);
         guestOperation.signIn(user);
@@ -50,6 +51,7 @@ public class LoginTest extends TestRunner {
     @MethodSource("provideMenuMyHabit")
     //public void checkMyHabit(String email, String password, String expectedLabel) {
     public void checkMyHabit(User user, MyMenu myMenu) {
+        logger.info("Start with user = " + user + " myMenu = " + myMenu);
         // Steps
         //guestOperation.signIn(email, password);
         guestOperation.signIn(user);

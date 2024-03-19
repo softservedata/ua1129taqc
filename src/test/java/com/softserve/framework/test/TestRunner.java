@@ -9,6 +9,8 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,6 +35,7 @@ public abstract class TestRunner {
     protected static LogginedOperation logginedOperation;
     protected static LocalStorageJS localStorageJS;
     protected static boolean isTestSuccessful = true;
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     protected void presentationSleep() {
         presentationSleep(1);
@@ -132,6 +135,8 @@ public abstract class TestRunner {
         System.out.println("\t@AfterEach executed, getTestMethod = " + testInfo.getTestMethod());
         //
         if (!isTestSuccessful) {
+            // log.error
+            logger.error("Error in = " + testInfo.getDisplayName());
             takeScreenShot(testInfo.getDisplayName());
             takePageSource(testInfo.getDisplayName());
         }

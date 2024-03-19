@@ -1,10 +1,14 @@
 package com.softserve.framework.library;
 
+import com.softserve.edu.Applog;
 import com.softserve.framework.data.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GuestOperation {
+    private static final Logger logger = LoggerFactory.getLogger(Applog.class); // org.slf4j.LoggerFactory
     private WebDriver driver;
 
     public GuestOperation(WebDriver driver) {
@@ -12,7 +16,9 @@ public class GuestOperation {
     }
 
     //public void signIn(String email, String password) {
-    public void signIn (User user){
+    public void signIn(User user){
+        System.out.println("*****Start with user = " + user);
+        logger.debug("+++++Start with user = " + user);
         // Click Login Button
         driver.findElement(By.cssSelector("app-ubs .ubs-header-sing-in-img")).click();
         //
@@ -32,6 +38,7 @@ public class GuestOperation {
         //
         // Press Button Login
         driver.findElement(By.cssSelector("button[type='submit']")).click();
+        logger.debug("Done with user = " + user);
     }
 
     public void greencitySwitch() {
